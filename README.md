@@ -1,6 +1,6 @@
 # Lumen logisztikai tervezőasztal
 
-Interaktív, egyéni gyakorlófelület az **AGELG157L AI-támogatott logisztikai tervezés** 3. konzultációjához (oktató: dr. Csonka Arnold, MATE Kaposvári Campus).
+Interaktív, egyéni gyakorlófelület az **AGELG157L AI-támogatott logisztikai tervezés** 3. konzultációjához.
 Négy feladat (hálózattervezés, járattervezés, raktári slotting, KPI-pult) élő ranglistával, AI-kihívásokkal és tanári kivetítő nézettel.
 
 A Lumen Ipari Zrt. és minden adata kitalált (szintetikus), oktatási célra készült. Az oldal AI-eszközök segítségével készült, oktatói felügyelet, ellenőrzés és véglegesítés mellett.
