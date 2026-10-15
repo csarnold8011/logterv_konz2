@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumen tervezőasztal</title>
+  <meta name="description" content="AGELG157L 3. konzultáció: interaktív, egyéni gyakorlat hálózattervezésről, járattervezésről, raktári slottingról és KPI-kről, AI-kihívásokkal és élő ranglistával.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23007548'/%3E%3Ctext x='16' y='23' font-size='19' font-family='Arial' font-weight='bold' text-anchor='middle' fill='%23ffffff'%3EL%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <div class="logo"><div class="logo-mark">MATE</div><div>Lumen logisztikai tervezőasztal<small>AI-támogatott logisztikai tervezés · AGELG157L</small></div></div>
+      <div class="team-chip"></div>
+    </div>
+  </header>
+  <nav class="tabs" aria-label="Küldetések">
+    <div class="inner">
+      <a href="#start">Munkaasztal</a>
+      <a href="#m1"><span class="n" style="background:var(--m1)">1</span>Hálózat</a>
+      <a href="#m2"><span class="n" style="background:var(--m2)">2</span>Járattervezés</a>
+      <a href="#m3"><span class="n" style="background:var(--m3)">3</span>Raktár</a>
+      <a href="#m4"><span class="n" style="background:var(--m4)">4</span>KPI-pult</a>
+      <a href="#ranglista">🏆 Ranglista</a>
+    </div>
+  </nav>
+  <main>
+    <section class="view" id="v-start"></section>
+    <section class="view" id="v-m1"></section>
+    <section class="view" id="v-m2"></section>
+    <section class="view" id="v-m3"></section>
+    <section class="view" id="v-m4"></section>
+    <section class="view" id="v-ranglista"></section>
+    <section class="view" id="v-tanar"></section>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/vendor/lp-solver.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/aggregate.js"></script>
+  <script src="js/backend.js"></script>
+  <script src="js/activities.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/m1-halozat.js"></script>
+  <script src="js/m2-jarat.js"></script>
+  <script src="js/m3-raktar.js"></script>
+  <script src="js/m4-kpi.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
