@@ -396,3 +396,22 @@ details.box.modszer > summary .ikon { background: #dceaf3; color: var(--mate-kek
 :root[data-theme="dark"] .modszer h4 { color: var(--mate-vzold); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .modszer h4 { color: var(--mate-vzold); } }
 .modszer .keplet-sor { font-family: var(--mono); font-size: .88rem; background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; margin: 6px 0; overflow-x: auto; }
+
+/* ---------- Kurzusértékelés ---------- */
+.ert-sav { display: flex; align-items: center; gap: 14px; margin: 18px 0 8px; padding: 14px 18px; border: 1px solid var(--line); border-left: 6px solid var(--accent); border-radius: 12px; background: var(--panel); color: var(--ink); text-decoration: none; }
+.ert-sav:hover { box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+.ert-sav .ikon { font-size: 1.3rem; color: var(--mate-zold); }
+.ert-sav small { display: block; }
+.ert-sav .nyil { margin-left: auto; font-size: 1.3rem; color: var(--mate-zold); }
+.ert-k { margin: 14px 0; }
+.ert-k .kerdes { margin: 0 0 6px; font-weight: 600; }
+.skala { display: flex; flex-wrap: wrap; gap: 6px; }
+.skala .sk { min-width: 42px; height: 40px; padding: 0 12px; border: 1px solid var(--line-2); border-radius: 8px; background: var(--panel); color: var(--ink); font: inherit; font-weight: 600; cursor: pointer; }
+.skala .sk.wide { font-weight: 400; }
+.skala .sk.nv { font-weight: 400; font-size: .85rem; color: var(--ink-3); border-style: dashed; }
+.skala .sk:hover { border-color: var(--mate-vzold); }
+.skala .sk.on { background: var(--mate-zold); border-color: var(--mate-zold); color: #fff; }
+.skala .sk.nv.on { background: var(--ink-3); border-color: var(--ink-3); color: #fff; }
+.ert-matrix td, .ert-matrix th { vertical-align: middle; }
+.ert-matrix select { min-width: 96px; padding: 6px 8px; }
+@media (max-width: 600px) { .ert-matrix select { min-width: 62px; padding: 6px 4px; } .ert-matrix td small { display: none; } }

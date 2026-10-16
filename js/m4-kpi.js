@@ -350,6 +350,7 @@ SZABÁLYOK:
     }
     LT.api.onState(renderPeer);
     renderPeer(LT.api.state);
+    root.appendChild(LT.ui.el(`<a class="ert-sav" href="#ertekeles"><span class="ikon">✎</span><span><b>Végeztél? Értékeld a kurzust!</b><small>Névtelen, önkéntes, nem jár érte pont: a kurzusról, a notebook alapú és a HTML-alapú oktatásról.</small></span><span class="nyil">→</span></a>`));
     kapu($("#m4-peer-kartya", root), [{ kesz: () => kesz("m4_ossz"), szoveg: "Előbb küldd be a saját összefoglalódat; utána szavazhatsz másokéra." }]);
   };
 })();

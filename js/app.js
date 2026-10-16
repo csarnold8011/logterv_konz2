@@ -67,7 +67,7 @@
   }
 
   /* ---------------- Navigáció ---------------- */
-  const VIEWS = ["start", "m1", "m2", "m3", "m4", "ranglista"];
+  const VIEWS = ["start", "m1", "m2", "m3", "m4", "ranglista", "ertekeles"];
   const inited = {};
   function route() {
     let v = (location.hash || "#start").slice(1);
@@ -109,6 +109,7 @@
 
       <div class="section-title">Feladatok</div>
       <div class="desk-grid" id="tiles"></div>
+      <a class="ert-sav" href="#ertekeles"><span class="ikon">✎</span><span><b>Kurzusértékelés</b><small>A nap végén: névtelen, önkéntes, nem jár érte pont. Néhány perc az egész.</small></span><span class="nyil">→</span></a>
 
       <div class="section-title">Tudnivalók</div>
       <details class="box"><summary><span class="ikon">⚙</span><span>Hogyan dolgozunk?<small>Minden feladat ugyanarra a mintára épül</small></span></summary><div class="tartalom">
@@ -237,11 +238,12 @@
       ...voteIds.map(id => ({ id, label: LT.ACT[id].cim })),
       { id: "ai", label: "AI-értékelések" },
       { id: "dontes", label: "Döntési javaslatok" },
-      { id: "ossz", label: "Vezetői összefoglalók" }
+      { id: "ossz", label: "Vezetői összefoglalók" },
+      { id: "ert", label: "Kurzusértékelés" }
     ];
     let cur = "verseny";
     $("#tsel", root).innerHTML = panels.map(p => `<button class="btn small" data-p="${p.id}">${esc(p.label)}</button>`).join("");
-    $$("#tsel button", root).forEach(b => b.onclick = () => { cur = b.dataset.p; render(LT.api.state); });
+    $$("#tsel button", root).forEach(b => b.onclick = () => { cur = b.dataset.p; LT._ertT = 0; render(LT.api.state); });
     let autoT = null;
     $("#auto", root).onchange = e => {
       clearInterval(autoT);
@@ -269,6 +271,8 @@
       $("#tteams", root).innerHTML = (st.teams || []).map(t => `<span class="tag">${esc(t)}</span>`).join("");
       $$("#tsel button", root).forEach(b => b.classList.toggle("primary", b.dataset.p === cur));
       const body = $("#tbody", root);
+      if (cur === "ert") { LT.ertekelesPanel(body); return; }
+      delete body.dataset.ert;
       if (cur === "verseny") {
         body.innerHTML = `<div class="grid g3">
           <div>${results(st, "m1_kezi", "M Ft/év", v => f.num(v, 1))}</div>

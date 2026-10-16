@@ -99,6 +99,36 @@
     }
   }
 
+
+  /* ---- Névtelen beküldés (kurzusértékelés): külön munkamenet, véletlen azonosító,
+     se név, se Neptun-kód nem kerül az eseménybe ---- */
+  const anonId = (() => {
+    try {
+      let a = localStorage.getItem("lt_anon");
+      if (!a) { a = "anon-" + Math.random().toString(36).slice(2, 10); localStorage.setItem("lt_anon", a); }
+      return a;
+    } catch (e) { return "anon-" + Math.random().toString(36).slice(2, 10); }
+  })();
+  async function submitAnon(sessKod, ev) {
+    const full = Object.assign({ session: sessKod, team: anonId, client: "", ts: Date.now() }, ev);
+    if (!C.API_URL) {
+      const k = "lt_events_" + sessKod, all = store.get(k, []);
+      all.push(full); store.set(k, all);
+      return { ok: true, helyi: true };
+    }
+    try { await post(full); return { ok: true }; }
+    catch (e) {
+      const q = store.get(queueKey(), []); q.push(full); store.set(queueKey(), q);
+      setStatus({ mod: "kapcsolat nélkül", varakozo: q.length, hiba: String(e.message || e) });
+      return { ok: false, sorban: true };
+    }
+  }
+  async function sessionState(sessKod) {
+    if (!C.API_URL) return window.ltAggregate(store.get("lt_events_" + sessKod, []));
+    const r = await fetch(C.API_URL + "?action=state&session=" + encodeURIComponent(sessKod) + "&_=" + Date.now());
+    return r.json();
+  }
+
   function start(sess, tm, isTeacher, np) {
     session = sess; team = tm; neptun = np || null;
     interval = isTeacher ? C.POLL_TANAR : C.POLL_DIAK;
@@ -112,7 +142,7 @@
   }
 
   LT.api = {
-    start, submit, refresh: fetchState, store, clientId,
+    start, submit, submitAnon, sessionState, refresh: fetchState, store, clientId,
     onState(f) { listeners.push(f); if (state) f(state); },
     onStatus(f) { statusListeners.push(f); f(status); },
     get state() { return state; },

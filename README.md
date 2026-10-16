@@ -1,6 +1,6 @@
 # Lumen logisztikai tervezőasztal
 
-Interaktív, egyéni gyakorlófelület az **AGELG157L AI-támogatott logisztikai tervezés** 3. konzultációjához.
+Interaktív, egyéni gyakorlófelület az **AGELG157L AI-támogatott logisztikai tervezés** 3. konzultációjához (oktató: dr. Csonka Arnold, MATE Kaposvári Campus).
 Négy feladat (hálózattervezés, járattervezés, raktári slotting, KPI-pult) élő ranglistával, AI-kihívásokkal és tanári kivetítő nézettel.
 
 A Lumen Ipari Zrt. és minden adata kitalált (szintetikus), oktatási célra készült. Az oldal AI-eszközök segítségével készült, oktatói felügyelet, ellenőrzés és véglegesítés mellett.
@@ -53,6 +53,7 @@ A zárt lépések lakattal jelzik, mi hiányzik még. A KPI-pultnál a hallgató
 | `js/activities.js` | A feladatok nyilvántartása (tippek, kvízek, versenyek) |
 | `js/ui.js` | Közös elemek: szavazás, verseny-ranglista, AI-kártya, egyszeri beküldés, zárolás |
 | `js/m1-halozat.js` … `js/m4-kpi.js` | A négy feladat |
+| `js/ertekeles.js` | Névtelen kurzusértékelés (hallgatói űrlap és tanári összesítő) |
 | `js/app.js` | Belépés, navigáció, munkaasztal, ranglista, tanári kivetítő, lábléc |
 | `apps-script/Code.gs` | A Google Apps Script backend (ezt kell bemásolni) |
 
@@ -102,6 +103,17 @@ A hivatalos MATE-logó opcionális: tedd a fájlt a repóba (például `assets/m
 * **Tanári nézet:** élő ranglista, belépési kód, a tippek és kvízek élő eredménye, KPI-szavazás, AI-értékelések, döntési javaslatok, vezetői összefoglalók. Az „automatikus lapozás” 12 másodpercenként vált panelt.
 * **Adatexport:** `.../exec?action=export&session=LOG1016` (JSON), vagy közvetlenül a Google Sheet.
 
+### Kurzusértékelés
+
+A „Kurzusértékelés” fül (a munkaasztalról és a 4. feladat végéről is elérhető) névtelen, önkéntes, pont nélküli visszajelzés a kurzusról, a notebook alapú és a HTML-alapú oktatásról:
+
+* **1. Témánként** (7 téma × érdekes / hasznos a munkámban / új tudást adott, 1–5)
+* **2. Összegzés** (érdekesség, hasznosság, új tudás, ajánlás, 1–5)
+* **3. Választás** (legértékesebb téma; notebook vagy HTML-felület)
+* **4. Szöveges** (mi tetszett leginkább; mit használ a munkájában; mi hiányzott)
+
+Minden kérdés kihagyható, és minden zárt kérdésnél van „nem tudom / nem kívánok válaszolni” lehetőség. A válaszok **külön munkamenetbe** kerülnek (`LOG1016_ERT`), véletlen azonosítóval, név és Neptun-kód nélkül, így a ranglistát sem érintik. Böngészőnként egyszer küldhető be. A tanári nézetben a „Kurzusértékelés” panel mutatja az átlagokat (hőtérkép), az eloszlásokat és a szöveges válaszokat. Nyers adat: `.../exec?action=export&session=LOG1016_ERT`.
+
 ### Pontozás
 
 | Elem | Pont |
@@ -130,7 +142,7 @@ A pontszámok a `js/aggregate.js` elején (`LT_PONT`) és az `apps-script/Code.g
 | 16:15–16:30 | Szünet (a tanári nézetben a versenyek állása) |
 | 16:30–17:20 | **3. Raktár:** Pareto-tipp → ABC-elemzés → „így mérünk” → slotting-játék → AI-slotting → ABC-algoritmus → bejárási módok |
 | 17:20–18:20 | **4. KPI-pult:** KPI-elmélet → pultépítés → hatásmátrix → pult → csapda-kvíz → saját összefoglaló → AI-összefoglaló → szavazás |
-| 18:20–18:45 | Zárás: ranglista, a legtöbb szavazatot kapott összefoglaló, beadandó, félév végi feladatok |
+| 18:20–18:45 | Zárás: kurzusértékelés kitöltése (5 perc), ranglista, a legtöbb szavazatot kapott összefoglaló, beadandó, félév végi feladatok |
 
 ### Amire érdemes felhívni a figyelmet az AI-kihívásoknál
 
